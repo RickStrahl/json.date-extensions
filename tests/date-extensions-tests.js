@@ -2,7 +2,7 @@
 /// <reference path="../src/json.date-extensions.js" />
 
 // Date Parser Extension
-test("dateParserExtension", function() {
+test("dateParserExtension", function () {
     var date = new Date();
     var json = JSON.stringify(date);
 
@@ -31,35 +31,35 @@ test("dateParserExtensionObject", function () {
 });
 
 test("parseWithDate", function () {
-var date = new Date();
-var json = JSON.stringify(date);
+    var date = new Date();
+    var json = JSON.stringify(date);
 
-var date2 = JSON.parseWithDate(json);
-console.log(date2);
+    var date2 = JSON.parseWithDate(json);
+    console.log(date2);
 
-equal(!date2.getTime, false, "Date should be a date object");
-equal(date2.toString(), date.toString(), "Dates should be equal");
+    equal(!date2.getTime, false, "Date should be a date object");
+    equal(date2.toString(), date.toString(), "Dates should be equal");
 });
 
 
 test("parseWithDateObject", function () {
-var obj = {
-    id: "141923asd1",
-    name: "rick",
-    entered: new Date(),
-    updated: new Date()
-};
-var json = JSON.stringify(obj);
+    var obj = {
+        id: "141923asd1",
+        name: "rick",
+        entered: new Date(),
+        updated: new Date()
+    };
+    var json = JSON.stringify(obj);
 
-var obj2 = JSON.parseWithDate(json);
+    var obj2 = JSON.parseWithDate(json);
 
-equal(!obj2.entered.getTime, false, "Date should be a date object");
-equal(obj2.entered.toString(), obj.entered.toString(), "Dates should be equal");
+    equal(!obj2.entered.getTime, false, "Date should be a date object");
+    equal(obj2.entered.toString(), obj.entered.toString(), "Dates should be equal");
 });
 
 
 // useDateParser global replace operation
-test("useDateParser", function() {
+test("useDateParser", function () {
     // enable global JSON parsing
     JSON.useDateParser();
 
@@ -78,21 +78,34 @@ test("useDateParser", function() {
 });
 
 
-
-
-test("dateStringToDateJson", function() {
+test("dateStringToDateJson", function () {
     var date = new Date();
     var json = JSON.stringify(date);
 
-    var date2 = JSON.dateStringToDate(json);    
-    equal(date2.toString(),date.toString(), "Deserialized date should match original date");
+    var date2 = JSON.dateStringToDate(json);
+
+    console.log(date2);
+    equal(date2.toString(), date.toString(), "Deserialized date should match original date");
 });
 
 test("dateStringToDateString", function () {
-   
+
     var date2 = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");
 
     equal(!date2.getTime, false, "Deserialized date string should be a date");
+});
+
+test("dateStringToDateDate", function () {
+
+    var date2 = JSON.dateStringToDate(new Date());
+
+    equal(!date2.getTime, false, "Deserialized date string should be a date");
+});
+
+test("dateStringToDateNull", function () {
+
+    var date2 = JSON.dateStringToDate(null);    
+    equal(!date2, true, "Date should be null");
 });
 
 
@@ -104,7 +117,7 @@ test("useDateParserAjax", function () {
     $.getJSON("JsonWithDate.txt")
         .done(function (data) {
             console.log("jquery result.entered: " + data.entered +
-                "  result.updated: " + data.updated);            
+                "  result.updated: " + data.updated);
             equal(!data.entered.getTime, false, "Entered should be a date");
         })
         .success(function () {
@@ -112,5 +125,5 @@ test("useDateParserAjax", function () {
             // replace original parser
             JSON.useDateParser(false);
         });
-    
+
 });

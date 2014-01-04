@@ -92,7 +92,7 @@
                 return dtString; // already a date
             
             if (dtString[0] === '"' || dtString[0] === "'")
-                // strip off JSON string markers
+                // strip off JSON quotes
                 dtString = dtString.substr(1, dtString.length - 2);
 
             var a = reISO.exec(dtString);
