@@ -5,12 +5,12 @@
 This small JavaScript library provides for automatically parsing JSON date strings 
 to real JavaScript dates as part of regular JSON parsing. 
 You can parse either individual date values or complex objects containing dates
-and have them automatically turned into dates, unlike the defaule JSON parser
+and have them automatically turned into dates, unlike the default JSON parser
 behavior of parsing to ISO date strings. 
 
 You can either manually apply the date parsing or replace the JSON parser 
 for the current global scope to force *all* JSON operations to parse dates 
-automatically.
+automatically, including those by other frameworks such as jQuery, angularJS etc.
 
 This library provides:
 
