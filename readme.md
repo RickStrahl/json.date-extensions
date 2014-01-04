@@ -2,19 +2,23 @@
 #JSON Parser Date Extensions
 ####Date parsing extensions for the JavaScript JSON parser to provide real JavaScript dates from JSON.parse()####
 
-This small library provides a few JavaScript extensions for automatically 
-parsing JSON date strings to real JavaScript dates, either on individual date
-values or in nested date values in object trees. You can either manually
-apply the date parsing or replace the JSON parser for the current global 
-scope to force *all* JSON operations to parse dates automatically.
+This small JavaScript library provides for automatically parsing JSON date strings 
+to real JavaScript dates as part of regular JSON parsing. 
+You can parse either individual date values or complex objects containing dates
+and have them automatically turned into dates, unlike the defaule JSON parser
+behavior of parsing to ISO date strings. 
+
+You can either manually apply the date parsing or replace the JSON parser 
+for the current global scope to force *all* JSON operations to parse dates 
+automatically.
 
 This library provides:
 
 * **JSON.dateParser()**<br/>
-  Extension that can be used with JSON.parse() 
-  to parse dates with explicit calls to JSON.parse.
+  JSON parser extension that can be used with JSON.parse() 
+  to parse dates with explicit calls to JSON.parse().
 
-* **JSON.parseWithDates()**<br/>
+* **JSON.parseWithDate()**<br/>
   Function to provide a wrapper function
   that behaves like JSON.parse() but parses dates.
 
@@ -32,7 +36,7 @@ This library provides:
 
 ##Usage##
 
-**JSON.parseWithDate**<br/>
+###JSON.parseWithDate###
 Manual JSON parsing with automatic date conversion:
 
 ```javascript
@@ -61,7 +65,7 @@ equal(obj2.entered.toString(), obj.entered.toString(), "Dates should be equal");
 ```
 
 
-**JSON.useDateParser**<br/>
+###JSON.useDateParser###
 useDateParser() can globally replace the JSON.parse() function with the
 JSON.parseWithDate() function, which results in automatically converting dates
 for all JSON operations on the global scope. This allows automatic conversions
@@ -105,7 +109,7 @@ $.getJSON("JsonWithDate.txt")
     });
 ```
 
-**JSON.dateParser**<br />
+###JSON.dateParser###
 dateParser is the JSON parse extension that is used to filter dates from
 date strings. You can use this filter directly with JSON.parse() although
 I'd recommend you use JSON.parseWithDate() instead.
@@ -124,7 +128,7 @@ var obj2 = JSON.parse(json, JSON.dateParser);
 console.log(obj2.entered,obj2.updated);
 ```
 
-**JSON.dateStringToDate**<br />
+###JSON.dateStringToDate###
 dateStringToDate reliably provides JavaScript dates from JSON dates strings,
 plain strings in ISO or MS AJAX formats or dates. Useful when you are not
 converting JSON dates automatically and you need to be sure you always get
