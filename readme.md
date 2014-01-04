@@ -6,15 +6,15 @@ This small JavaScript library provides for automatically parsing JSON date strin
 to real JavaScript dates as part of regular JSON parsing. 
 You can parse either individual date values or complex objects containing dates
 and have them automatically turned into dates, unlike the default JSON parser
-behavior of parsing to ISO date strings. 
+behavior of parsing to ISO 8601 date strings. 
 
-You can either manually apply the date parsing or replace the JSON parser 
-for the current global scope to force *all* JSON operations to parse dates 
+You can either manually run the date parsing or replace the JSON parser 
+for the global scope to force *all* JSON operations to parse dates 
 automatically, including those by other frameworks such as jQuery, angularJS etc.
 
 This library provides:
 
-* **JSON.dateParser()**<br/>
+* **JSON.dateParser**<br/>
   JSON parser extension that can be used with JSON.parse() 
   to parse dates with explicit calls to JSON.parse().
 
@@ -32,7 +32,8 @@ This library provides:
   Safely converts JSON ISO and MSAJAX
   dates, raw ISO and MSAJAX string values and dates to JavaScript
   dates. This function is a simple helper to guarantee you get a 
-  date value.
+  date value regardless of which format the date is in with an optional
+  override to return a known value if the date can't be resolved.
 
 ##Usage##
 
