@@ -11,6 +11,12 @@
         var reISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*))(?:Z|(\+|-)([\d|:]*))?$/;
         var reMsAjax = /^\/Date\((d|-|.*)\)[\/|\\]$/;
 
+        /// <summary>
+        /// set this if you want MS Ajax Dates parsed
+        /// before calling any of the other functions
+        /// </summary>
+        JSON.parseMsAjaxDate = false;
+
         JSON.useDateParser = function(reset) {
             /// <summary>
             /// Globally enables JSON date parsing for JSON.parse().
@@ -45,6 +51,10 @@
                 var a = reISO.exec(value);
                 if (a)
                     return new Date(value);
+
+                if (!JSON.parseMsAjaxDate)
+                    return value;
+
                 a = reMsAjax.exec(value);
                 if (a) {
                     var b = a[1].split(/[-+,.]/);
@@ -98,6 +108,10 @@
             var a = reISO.exec(dtString);
             if (a)
                 return new Date(dtString);
+
+            if (!JSON.parseMsAjaxDate)
+                return nullDateVal;
+
             a = reMsAjax.exec(dtString);
             if (a) {
                 var b = a[1].split(/[-,.]/);

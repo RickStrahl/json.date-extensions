@@ -95,6 +95,15 @@ test("dateStringToDateString", function () {
     equal(!date2.getTime, false, "Deserialized date string should be a date");
 });
 
+test("dateStringToDateMsAjaxString", function () {
+    JSON.parseMsAjaxDate = true;  // default is off
+    var date2 = JSON.dateStringToDate("\/Date(1388804145879)\/");
+    JSON.parseWithDate = false; // turn off for subsequent tests
+
+    console.log(date2); // should be a date (or null on failure)
+    equal(!date2, false, "Deserialized date string should be a date");
+});
+
 test("dateStringToDateDate", function () {
 
     var date2 = JSON.dateStringToDate(new Date());

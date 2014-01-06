@@ -135,10 +135,24 @@ plain strings in ISO or MS AJAX formats or dates. Useful when you are not
 converting JSON dates automatically and you need to be sure you always get
 consistent date values in code.
 
+All of the following should produce a date:
+
 ```javascript
 var date = new Date();
 var json = JSON.stringify(date);
 
+// JSON date
 var date2 = JSON.dateStringToDate(json);
-console.log(date2);  // Wed Jan 01 2014 13:28:56 GMT-1000 (Hawaiian Standard Time) 
+console.log(date2);  
+
+// string ISO date
+date2 = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");
+console.log(date2);
+
+date2 = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");
+console.log(date2);
+
+// real date - just echoed back
+date2 = JSON.dateStringToDate(new Date());
+console.log(date2);
 ```
