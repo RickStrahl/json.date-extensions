@@ -13,6 +13,14 @@ test("dateParserExtension", function () {
     equal(date2.toString(), date.toString(), "Dates should be equal");
 });
 
+test("parse ISO date/time without decimals in seconds", function () {
+
+    var ajaxString = '{"entered": "2014-02-06T02:00:00Z"}';
+    var obj = JSON.parse(ajaxString, JSON.dateParser);
+
+    equal(!obj.entered.getTime, false, "Date should be a date object");
+    equal(obj.entered.toString(), obj.entered.toString(), "Dates should be equal");
+});
 
 // Date Parser Extension with object dates
 test("dateParserExtensionObject", function () {
