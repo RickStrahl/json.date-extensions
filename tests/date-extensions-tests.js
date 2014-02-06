@@ -82,17 +82,26 @@ test("dateStringToDateJson", function () {
     var date = new Date();
     var json = JSON.stringify(date);
 
-    var date2 = JSON.dateStringToDate(json);
-
-    console.log(date2);
+    var date2 = JSON.dateStringToDate(json);    
     equal(date2.toString(), date.toString(), "Deserialized date should match original date");
 });
 
-test("dateStringToDateString", function () {
+test("ISODateFormatsDateStringToDate", function () {
 
-    var date2 = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");
+    var date = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");    
+    equal(date != null, true, "Deserialized date string should be a date");
 
-    equal(!date2.getTime, false, "Deserialized date string should be a date");
+    date = JSON.dateStringToDate("2014-01-01T13:13:34.41Z");
+    equal(date != null, true, "Deserialized date string should be a date");
+
+    date = JSON.dateStringToDate("2014-01-01T13:13:34.01Z");
+    equal(date != null, true, "Deserialized date string should be a date");
+
+    date = JSON.dateStringToDate("2014-01-01T13:13:34.11Z");
+    equal(date != null, true, "Deserialized date string should be a date");
+
+    date = JSON.dateStringToDate("2014-01-01T13:13:34Z"); // no decimals
+    equal(date != null, true, "Deserialized date string should be a date");
 });
 
 test("dateStringToDateMsAjaxString", function () {
@@ -101,7 +110,7 @@ test("dateStringToDateMsAjaxString", function () {
     JSON.parseWithDate = false; // turn off for subsequent tests
 
     console.log(date2); // should be a date (or null on failure)
-    equal(!date2, false, "Deserialized date string should be a date");
+    equal(date2 != null, true, "Deserialized date string should be a date");
 });
 
 test("dateStringToDateDate", function () {
@@ -124,13 +133,21 @@ test("useDateParserAjax", function () {
     stop();
 
     $.getJSON("JsonWithDate.txt")
-        .done(function (data) {
+        .done(function(data) {
+            start();
             console.log("jquery result.entered: " + data.entered +
                 "  result.updated: " + data.updated);
-            equal(!data.entered.getTime, false, "Entered should be a date");
+
+            equal(data.entered != null && data.entered.getTime != null, true,
+                "data.entered should be a Date. Value: " + data.entered + " Note this error may fail randomly due to async setting for useDateParser(). To see this test work properly consistently run individually.");
+
+            // replace original parser
+            JSON.useDateParser(false);
         })
-        .success(function () {
+        .error(function () {
             start();
+            console.log("error");
+        equal(false, true, "Callback failed - no date was converted.");
             // replace original parser
             JSON.useDateParser(false);
         });
