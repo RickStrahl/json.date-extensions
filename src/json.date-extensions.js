@@ -20,7 +20,8 @@
         JSON.useDateParser = function(reset) {
             /// <summary>
             /// Globally enables JSON date parsing for JSON.parse().
-            /// replaces the 
+            /// Replaces the default JSON.parse() method and adds
+            /// the datePaser() extension to the processing chain.
             /// </summary>    
             /// <param name="reset" type="bool">when set restores the original JSON.parse() function</param>
 
@@ -38,33 +39,43 @@
             }
         };
 
-        JSON.dateParser = function(key, value) {
-            /// <summary>
-            /// Globally enables JSON date parsing for JSON.parse().
-            /// Replaces the default JSON.parse() method and adds
-            /// the datePaser() extension to the processing chain.
-            /// </summary>    
-            /// <param name="key" type="string">property name that is parsed</param>
-            /// <param name="value" type="any">property value</param>
-            /// <returns type="date">returns date or the original value if not a date string</returns>
-            if (typeof value === 'string') {
-                var a = reISO.exec(value);
-                if (a)
-                    return new Date(value);
+        /// <summary>
+        /// Creates a new filter that processes dates and also delegates to a chain filter optionaly.
+        /// </summary>    
+        /// <param name="chainFilter" type="Function">property name that is parsed</param>
+        /// <returns type="Function">returns a new chainning filter for dates</returns>
+        function createDateParser(chainFilter) {
+            return function(key, value) {
+                if (typeof value === 'string') {
+                    var a = reISO.exec(value);
+                    if (a)
+                        return new Date(value);
 
-                if (!JSON.parseMsAjaxDate)
-                    return value;
+                    if (!JSON.parseMsAjaxDate)
+                        return value;
 
-                a = reMsAjax.exec(value);
-                if (a) {
-                    var b = a[1].split(/[-+,.]/);
-                    return new Date(b[0] ? +b[0] : 0 - +b[1]);
+                    a = reMsAjax.exec(value);
+                    if (a) {
+                        var b = a[1].split(/[-+,.]/);
+                        return new Date(b[0] ? +b[0] : 0 - +b[1]);
+                    }
                 }
-            }
-            return value;
-        };
+                if (chainFilter !== undefined)
+                    return chainFilter(key, value);
+                else
+                    return value;
+            };
+        }
 
-        JSON.parseWithDate = function(json) {
+        /// <summary>
+        /// A filter that can be used with JSON.parse to convert dates.
+        /// </summary>    
+        /// <param name="key" type="string">property name that is parsed</param>
+        /// <param name="value" type="any">property value</param>
+        /// <returns type="date">returns date or the original value if not a date string</returns>
+        JSON.dateParser = createDateParser();
+
+        JSON.parseWithDate = function(json, chainFilter) {
             /// <summary>
             /// Wrapper around the JSON.parse() function that adds a date
             /// filtering extension. Returns all dates as real JavaScript dates.
@@ -73,7 +84,7 @@
             /// <returns type="any">parsed value or object</returns>
             var parse = JSON._parseSaved ? JSON._parseSaved : JSON.parse;
             try {
-                var res = parse(json, JSON.dateParser);
+                var res = parse(json, createDateParser(chainFilter));
                 return res;
             } catch (e) {
                 // orignal error thrown has no error message so rethrow with message
