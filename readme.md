@@ -12,6 +12,9 @@ You can either manually run the date parsing or replace the JSON parser
 for the global scope to force *all* JSON operations to parse dates 
 automatically, including those by other frameworks such as jQuery, angularJS etc.
 
+This library came about as part of the following blog post:
+* **[JavaScript JSON Date Parsing and real Dates](http://weblog.west-wind.com/posts/2014/Jan/06/JavaScript-JSON-Date-Parsing-and-real-Dates)**
+
 This library provides:
 
 * **JSON.dateParser**<br/>
