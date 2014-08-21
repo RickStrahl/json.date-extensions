@@ -102,6 +102,10 @@ test("ISODateFormatsDateStringToDate", function () {
 
     date = JSON.dateStringToDate("2014-01-01T13:13:34Z"); // no decimals
     equal(date != null, true, "Deserialized date string should be a date");
+
+    date = JSON.dateStringToDate("2014-01-01T04:13:00+00:00"); 
+    equal(date != null, true, "Deserialized date string should be a date ");
+
 });
 
 test("dateStringToDateMsAjaxString", function () {
