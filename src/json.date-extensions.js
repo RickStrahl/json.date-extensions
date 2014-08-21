@@ -26,13 +26,13 @@
             /// <param name="reset" type="bool">when set restores the original JSON.parse() function</param>
 
             // if any parameter is passed reset
-            if (typeof reset != "undefined") {
+            if (reset != undefined) {
                 if (JSON._parseSaved) {
                     JSON.parse = JSON._parseSaved;
                     JSON._parseSaved = null;
                 }
             } else {
-                if (!JSON.parseSaved) {
+                if (!JSON._parseSaved) {
                     JSON._parseSaved = JSON.parse;
                     JSON.parse = JSON.parseWithDate;
                 }
