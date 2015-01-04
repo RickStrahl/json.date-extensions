@@ -44,7 +44,7 @@
         /// </summary>    
         /// <param name="chainFilter" type="Function">property name that is parsed</param>
         /// <returns type="Function">returns a new chainning filter for dates</returns>
-        function createDateParser(chainFilter) {
+        var createDateParser = function(chainFilter) {
             return function(key, value) {
                 var parsedValue = value;
                 if (typeof value === 'string') {
