@@ -6,8 +6,9 @@
  * Released under MIT License
  * http://en.wikipedia.org/wiki/MIT_License
  */
-(function (undefined) {    
-
+(function (undefined) {
+    "use strict"; 
+        
     if (JSON && !JSON.dateParser) {
         var reISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.{0,1}\d*))(?:Z|(\+|-)([\d|:]*))?$/;
         var reMsAjax = /^\/Date\((d|-|.*)\)[\/|\\]$/;
