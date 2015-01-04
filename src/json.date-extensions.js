@@ -1,4 +1,4 @@
-/**
+/*
  * JSON Date Extensions - JSON date parsing extensions
  * 
  * (c) 2014 Rick Strahl, West Wind Technologies
@@ -6,8 +6,9 @@
  * Released under MIT License
  * http://en.wikipedia.org/wiki/MIT_License
  */
-(function(undefined) {
-    if (this.JSON && !this.JSON.dateParser) {
+(function (undefined) {    
+
+    if (JSON && !JSON.dateParser) {
         var reISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.{0,1}\d*))(?:Z|(\+|-)([\d|:]*))?$/;
         var reMsAjax = /^\/Date\((d|-|.*)\)[\/|\\]$/;
 
@@ -26,7 +27,7 @@
             /// <param name="reset" type="bool">when set restores the original JSON.parse() function</param>
 
             // if any parameter is passed reset
-            if (reset != undefined) {
+            if (reset !== undefined) {
                 if (JSON._parseSaved) {
                     JSON.parse = JSON._parseSaved;
                     JSON._parseSaved = null;

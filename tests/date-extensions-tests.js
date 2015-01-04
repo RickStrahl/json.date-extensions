@@ -89,22 +89,22 @@ test("dateStringToDateJson", function () {
 test("ISODateFormatsDateStringToDate", function () {
 
     var date = JSON.dateStringToDate("2014-01-01T13:13:34.441Z");    
-    equal(date != null, true, "Deserialized date string should be a date");
+    equal(date !== null, true, "Deserialized date string should be a date");
 
     date = JSON.dateStringToDate("2014-01-01T13:13:34.41Z");
-    equal(date != null, true, "Deserialized date string should be a date");
+    equal(date !== null, true, "Deserialized date string should be a date");
 
     date = JSON.dateStringToDate("2014-01-01T13:13:34.01Z");
-    equal(date != null, true, "Deserialized date string should be a date");
+    equal(date !== null, true, "Deserialized date string should be a date");
 
     date = JSON.dateStringToDate("2014-01-01T13:13:34.11Z");
-    equal(date != null, true, "Deserialized date string should be a date");
+    equal(date !== null, true, "Deserialized date string should be a date");
 
     date = JSON.dateStringToDate("2014-01-01T13:13:34Z"); // no decimals
-    equal(date != null, true, "Deserialized date string should be a date");
+    equal(date !== null, true, "Deserialized date string should be a date");
 
     date = JSON.dateStringToDate("2014-01-01T04:13:00+00:00"); 
-    equal(date != null, true, "Deserialized date string should be a date ");
+    equal(date !== null, true, "Deserialized date string should be a date ");
 
 });
 
@@ -114,7 +114,7 @@ test("dateStringToDateMsAjaxString", function () {
     JSON.parseWithDate = false; // turn off for subsequent tests
 
     console.log(date2); // should be a date (or null on failure)
-    equal(date2 != null, true, "Deserialized date string should be a date");
+    equal(date2 !== null, true, "Deserialized date string should be a date");
 });
 
 test("dateStringToDateDate", function () {
