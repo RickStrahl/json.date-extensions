@@ -29,7 +29,8 @@ This library provides:
   Globally replace JSON.parse() with
   JSON.parseWithDates to affect all JSON.parse() operations within
   the current page/scope. Affects all JSON operations including 
-  framework JSON parsing such as jQuery.getJSON() etc.
+  framework JSON parsing such as jQuery.getJSON(), 
+  Angular $http functions etc.
 
 * **JSON.dateStringToDate()**<br/> 
   Safely converts JSON ISO and MSAJAX
