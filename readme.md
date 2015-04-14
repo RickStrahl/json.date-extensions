@@ -42,6 +42,7 @@ This library provides:
 ## Installation
 You can either use the files out of the `dist` folder directly or you
 can install the files via Bower:
+
 	bower install json.date-extensions
 
 ## Usage
