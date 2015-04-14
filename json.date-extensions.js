@@ -1,6 +1,6 @@
 /*
  * JSON Date Extensions - JSON date parsing extensions
- * Version 1.2.0
+ * Version 1.2.1
  * https://github.com/RickStrahl/json.date-extensions
  * (c) 2013-2015 Rick Strahl, West Wind Technologies
  *
