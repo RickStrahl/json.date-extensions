@@ -5,8 +5,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "test",    
-    "*.md",
+    "test"    
   ],
   "keywords": [
     "json",
