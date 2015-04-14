@@ -5,6 +5,7 @@
   "license": "MIT",
   "ignore": [
     "*.sln",
+    "*.git*"
     "tests"    
   ],
   "keywords": [
