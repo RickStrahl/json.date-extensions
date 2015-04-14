@@ -39,7 +39,13 @@ This library provides:
   date value regardless of which format the date is in with an optional
   override to return a known value if the date can't be resolved.
 
-## Usage ##
+## Installation
+You can either use the files out of the `dist` folder directly or you
+can install the files via Bower:
+	bower install json.date-extensions
+
+## Usage
+This library provides a simple API for changing the behavior of the JSON parser. You can either explicitly parse JSON data using provided functions or change the behavior of the parser globally.
 
 ### JSON.parseWithDate ###
 Manual JSON parsing with automatic date conversion:
