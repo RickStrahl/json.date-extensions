@@ -4,8 +4,8 @@
   "main": "src/json.date-extensions.js",
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "test"    
+    "*.sln",
+    "tests"    
   ],
   "keywords": [
     "json",

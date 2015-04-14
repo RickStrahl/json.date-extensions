@@ -34,9 +34,9 @@ x64/
 *.tlh
 *.tmp
 *.log
-*.js.map
 *.vspscc
 *.vssscc
+*.DotSettings
 .builds
 
 
