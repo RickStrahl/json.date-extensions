@@ -1,0 +1,16 @@
+{
+  "name": "json.date-extensions",
+  "version": "1.2.0",
+  "main": "src/json.date-extensions.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "test",    
+    "*.md",
+  ],
+  "keywords": [
+    "json",
+    "date"    
+  ],
+  "homepage": "https://github.com/RickStrahl/json.date-extensions"  
+}
