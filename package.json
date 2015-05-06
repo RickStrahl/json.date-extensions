@@ -1,0 +1,27 @@
+{
+  "name": "json.date-extensions",
+  "version": "1.2.1",
+  "description": "JSON date parsing extensions",
+  "main": "json.date-extensions.js",
+    "directories": {
+        "test": "tests"
+    },
+
+  "scripts": {
+    "test": "echo \"Error: no tests specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RickStrahl/json.date-extensions.git"
+  },
+  "keywords": [
+    "JSON",
+    "Date"
+  ],
+  "author": "Rick Strahl <rstrahl@west-wind.com> (http://weblog.west-wind.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RickStrahl/json.date-extensions/issues"
+  },
+  "homepage": "https://github.com/RickStrahl/json.date-extensions"
+}
