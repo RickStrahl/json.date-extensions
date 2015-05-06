@@ -40,10 +40,17 @@ This library provides:
   override to return a known value if the date can't be resolved.
 
 ## Installation
-You can either use the files out of the `dist` folder directly or you
-can install the files via Bower:
+You can either use the files out of the root folder directly or you
+can install from one of the package repositories:
 
+##### Bower
 	bower install json.date-extensions
+
+##### NPM
+    npm install json.date-extensions
+
+##### JSPM
+    jspm install json.date-extensions
 
 ## Usage
 This library provides a simple API for changing the behavior of the JSON parser. You can either explicitly parse JSON data using provided functions or change the behavior of the parser globally.

@@ -1,7 +1,7 @@
 {
   "name": "json.date-extensions",
   "version": "1.2.2",
-  "description": "JSON date parsing extensions",
+  "description": "JSON date parsing extensions by extending JSON object.",
   "main": "json.date-extensions.js",
     "directories": {
         "test": "tests"
