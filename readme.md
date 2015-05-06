@@ -52,6 +52,22 @@ can install from one of the package repositories:
 ##### JSPM
     jspm install json.date-extensions
 
+Note this library has no exports - it only extends the JSON object with additional members you can call. You can `require` without capturing the return value.
+
+```javascript
+ require('json.date-extensions');
+ JSON.useDateParser();
+```
+
+or use simple script references in your HTML document:
+
+```html
+<script src="scripts/json.date-extensions.min.js"></script>
+<script>
+    JSON.useDateParser();
+</script>
+```
+
 ## Usage
 This library provides a simple API for changing the behavior of the JSON parser. You can either explicitly parse JSON data using provided functions or change the behavior of the parser globally.
 
