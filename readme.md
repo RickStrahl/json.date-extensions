@@ -1,6 +1,6 @@
 
 # JSON Parser Date Extensions
-#### Date parsing extensions for the JavaScript JSON parser to provide real JavaScript dates from JSON.parse()####
+#### Date parsing extensions for the JavaScript JSON parser to provide real JavaScript dates from JSON.parse()
 
 This small JavaScript library provides for automatically parsing JSON date strings 
 to real JavaScript dates as part of regular JSON parsing. 
