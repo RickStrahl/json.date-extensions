@@ -76,6 +76,15 @@
         /// <param name="value" type="any">property value</param>
         /// <returns type="date">returns date or the original value if not a date string</returns>
         JSON.dateParser = createDateParser();
+        
+        /// <summary>
+        /// Parse a Json using the browser default JSON.parse method
+        /// </summary>
+        /// <param name="json" type="string">JSON to be parsed</param>
+        /// <returns type="any">parsed value or object</returns>
+        JSON.originalParse = function (json) {
+            return JSON._parseSaved ? JSON._parseSaved(json) : JSON.parse(json);
+        }
 
         JSON.parseWithDate = function(json, chainFilter) {
             /// <summary>
